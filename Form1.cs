@@ -73,23 +73,7 @@ namespace WhatsTheDiameter
 
         private void Sort_Click(object sender, EventArgs e)
         {
-            // Shorthand, instead of writing this.circles all over the place-- this is a reference, not a copy
-            var c = this.circles;
-            var len = this.circles.Count;
-            
-            for(int x=0; x < len; x++)
-            {
-                for(int i = 0; i < len-1-x; i++)
-                {
-                    if (c[i].CompareTo(c[i + 1]) > 0)
-                    {
-                        var temp = c[i + 1];
-                        c[i + 1] = c[i];
-                        c[i] = temp;
-                    }
-                }
-            }
-
+            this.circles.Sort();
             RedrawCircleCollection();
         }
     }
