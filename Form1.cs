@@ -73,30 +73,21 @@ namespace WhatsTheDiameter
 
         private void Sort_Click(object sender, EventArgs e)
         {
-            int len;
-            len = this.circles.LastIndexOf(this.circles.Last())+1;
-            double[] Rads;
-            Rads = new double[len];
-            for(int i = 0; i < len; i++)
-            {
-                Rads[i] = this.circles[i].getRadius();
-            }
+            // Shorthand, instead of writing this.circles all over the place-- this is a reference, not a copy
+            var c = this.circles;
+            var len = this.circles.Count;
+            
             for(int x=0; x < len; x++)
             {
-                for(int i = 0; i < len-1; i++)
+                for(int i = 0; i < len-1-x; i++)
                 {
-                    if (Rads[i] > Rads[i + 1])
+                    if (c[i].getRadius() > c[i + 1].getRadius())
                     {
-                        double temp;
-                        temp = Rads[i + 1];
-                        Rads[i + 1] = Rads[i];
-                        Rads[i] = temp;
+                        var temp = c[i + 1];
+                        c[i + 1] = c[i];
+                        c[i] = temp;
                     }
                 }
-            }
-            for(int i = 0; i < len; i++)
-            {
-                this.circles[i].setRadius(Rads[i]);
             }
             RedrawCircleCollection();
         }
