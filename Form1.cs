@@ -81,7 +81,7 @@ namespace WhatsTheDiameter
             {
                 for(int i = 0; i < len-1-x; i++)
                 {
-                    if (c[i].getRadius() > c[i + 1].getRadius())
+                    if (c[i].CompareTo(c[i + 1]) > 0)
                     {
                         var temp = c[i + 1];
                         c[i + 1] = c[i];
@@ -89,6 +89,7 @@ namespace WhatsTheDiameter
                     }
                 }
             }
+
             RedrawCircleCollection();
         }
     }

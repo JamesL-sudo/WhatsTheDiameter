@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WhatsTheDiameter
 {
-    class Circle
+    class Circle : IComparable<Circle>
     {
         private double radius;
         // You can use Math.PI to get pi.
@@ -42,6 +42,15 @@ namespace WhatsTheDiameter
         public void setRadius(double rad)
         {
             this.radius = rad;
+        }
+
+        public int CompareTo (Circle that)
+        {
+            if (this.radius < that.radius)
+                return -1;
+            else if (this.radius > that.radius)
+                return 1;
+            return 0;
         }
         // Need now getDiameter, getCircumference, getArea.
 
